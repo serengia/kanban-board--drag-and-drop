@@ -31,10 +31,7 @@ function setItems(key, valueArr){
   localStorage.setItem(key) = JSON.stringify(valueArr)
 };
 
-function drag(e) {
-  draggedItem = e.target;
-  console.log("DRAGGED::", draggedItem);
-}
+
 
 function updateUiList(arrItems, container, createItemFun){
  container.innerHTML = ""
@@ -48,4 +45,39 @@ updateUiList(getItems("backlog"), backlogContainer, createItem)
 updateUiList(getItems("inprogress"), inprogressContainer, createItem)
 updateUiList(getItems("complete"), completeContainer, createItem)
 updateUiList(getItems("onhold"), onholdContainer, createItem)
+
+// Allow drop on containers
+
+const containers = [backlogContainer, inprogressContainer, completeContainer, onholdContainer]
+let draggedOverContainerIndex;
+
+containers.forEach(cont =>{
+  cont.setAttribute("ondragover", "allowDrop(event)");
+  cont.setAttribute("ondrop", "drop(event)");
+})
+
+function drag(e) {
+  draggedItem = e.target;
+}
+
+function allowDrop(e){
+e.preventDefault()
+e.target.closest("ul").classList.add("over")
+console.log(e.target.closest("ul"));
+}
+
+function drop(e){
+  e.preventDefault()
+  const parentContainer = containers[draggedOverContainerIndex];
+  parentContainer.appendChild(draggedItem)
+  containers.forEach(con => {
+    con.classList.remove("over")
+  })
+}
+
+function dragEnter(index){
+  draggedOverContainerIndex = index;  
+
+}
+
 
