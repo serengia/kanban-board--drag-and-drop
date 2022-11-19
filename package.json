@@ -1,0 +1,25 @@
+{
+  "name": "kanban-board",
+  "version": "1.0.0",
+  "description": "This project is a simple simulation on Trello. You are able to drag and drop items to different sections ie. backlog, in progress, done, on hold. The state and data is stored in local storage.",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel watch src/index.html",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serengia/kanban-board--drag-and-drop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serengia/kanban-board--drag-and-drop/issues"
+  },
+  "homepage": "https://github.com/Serengia/kanban-board--drag-and-drop#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "parcel": "^2.8.0"
+  }
+}
